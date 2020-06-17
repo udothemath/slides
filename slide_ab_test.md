@@ -1,5 +1,5 @@
 ---
-title: For a/b test
+title: a/b testing slide
 tags: note, talk, slides 
 description: View the slide with "Slide Mode".
 slideOptions:   
@@ -11,140 +11,51 @@ slideOptions:
   # parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
 ---
 
-# A/B Test
-
+# A/B Testing
 <!-- Put the link to this slide here so people can follow -->
-slide: https://hackmd.io/p/template-Talk-slide
+###### slide: https://hackmd.io/@wLbreQIzTfaUDlT5XfCAtA/H1VviTUTL#/
 
 ---
 
-We have a collaborative session
-
-please prepare laptop or smartphone to join!
+## Why A/B Testing?
 
 ---
 
-## Who am I?
-
-- Front-end developer
-- VSCode :heart: 
-- I use tabs. :cat: 
+### Help you to find the right answer
 
 ---
 
-### 70% of our users are developers. Developers :heart: GitHub.
+#### Which button drives the most sign ups?
+#### Which image is the most effective?
+#### Which video persuades the audience?
+#### Which feature drives the most engagement?
 
 ---
 
-{%youtube E8Nj7RwXf0s %}
+A/B Testing            |  For Example
+:-------------------------:|:-------------------------:
+![](https://i.imgur.com/KPADZPz.png) |  ![](https://i.imgur.com/KDMHa24.png)
 
 ---
 
-### Usage flow
+### A/B Testing Process
 
 ---
 
-
-```graphviz
-digraph {
-  compound=true
-  rankdir=RL
-
-  graph [ fontname="Source Sans Pro", fontsize=20 ];
-  node [ fontname="Source Sans Pro", fontsize=18];
-  edge [ fontname="Source Sans Pro", fontsize=12 ];
-
-
-  subgraph core {
-    c [label="Hackmd-it \ncore"] [shape=box]
-  }
-  
-  c -> sync [ltail=session lhead=session]
-
-  subgraph cluster1 {
-     concentrate=true
-    a [label="Text source\nGithub, Gitlab, ..."] [shape=box]
-    b [label="HackMD Editor"] [shape=box]
-    sync [label="sync" shape=plaintext ]
-    b -> sync  [dir="both"]
-    sync -> a [dir="both"]
-    label="An edit session"
-  }
-}
-```
+1. Collect Data
+2. Identify Goals
+3. Generate Hypothesis
+4. Create Variations
+5. Run Experiment
+6. Analyze Results
 
 ---
 
-### Architecture of extension
+### (Brief) Work Flow
 
 ---
 
-![](https://i.imgur.com/ij69tPh.png)
-
----
-
-## Content script
-
-- Bind with each page
-- Manipulate DOM
-- Add event listeners
-- Isolated JavaScript environment
-  - It doesn't break things
-
----
-
-# :fork_and_knife: 
-
----
-
-<style>
-code.blue {
-  color: #337AB7 !important;
-}
-code.orange {
-  color: #F7A004 !important;
-}
-</style>
-
-- <code class="orange">onMessage('event')</code>: Register event listener
-- <code class="blue">sendMessage('event')</code>: Trigger event
-
----
-
-# :bulb: 
-
----
-
-- Dead simple API
-- Only cares about application logic
-
----
-
-```typescript
-import * as Channeru from 'channeru'
-
-// setup channel in different page environment, once
-const channel = Channeru.create()
-```
-
----
-
-```typescript
-// in background script
-const fakeLogin = async () => true
-
-channel.answer('isLogin', async () => {
-  return await fakeLogin()
-})
-```
-
-<br>
-
-```typescript
-// in inject script
-const isLogin = await channel.callBackground('isLogin')
-console.log(isLogin) //-> true
-```
+![](https://i.imgur.com/cOhPCiP.png)
 
 ---
 
@@ -152,18 +63,9 @@ console.log(isLogin) //-> true
 
 ---
 
-### Wrap up
+### Reference
 
-- Cross envornment commnication
-- A small library to solve messaging pain
-- TypeScript Rocks :tada: 
+- [An Introduction to A/B Testing](https://www.youtube.com/watch?v=wRhJH0gZns0)
+- [Optimizely](https://www.optimizely.com/optimization-glossary/ab-testing/)
 
 ---
-
-### Thank you! :sheep: 
-
-You can find me on
-
-- GitHub
-- Twitter
-- or email me
